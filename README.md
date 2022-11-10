@@ -4,3 +4,5 @@
 - [A nerd font](https://github.com/ryanoasis/nerd-fonts)
 - [Starship prompt](https://starship.rs)
 - Recommended: [Windows Terminal](https://github.com/microsoft/terminal)
+
+![sample](./sample.png)
