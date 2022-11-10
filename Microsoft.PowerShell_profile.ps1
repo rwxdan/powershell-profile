@@ -44,8 +44,6 @@ function unzip ($file) {
 function touch ($file) {
   New-Item $file
 }
-
-# Get machine uptime
 function uptime {
   Get-WmiObject win32_operatingsystem | Select-Object csname, @{LABEL='LastBootUpTime';
   EXPRESSION={$_.ConverttoDateTime($_.lastbootuptime)}}
