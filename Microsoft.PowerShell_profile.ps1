@@ -5,7 +5,12 @@ Import-Module -Name Terminal-Icons
 
 # Straight to your wsl $HOME dir
 function wsl {
-  wsl.exe --cd ~
+  if ($args.Count -gt 0) {
+    wsl.exe $args
+  }
+  else {
+    wsl.exe --cd ~
+  }
 }
 
 # #OneLetterMatters
@@ -44,13 +49,15 @@ function unzip ($file) {
 function touch ($file) {
   New-Item $file
 }
+
+# Get machine uptime
 function uptime {
   Get-WmiObject win32_operatingsystem | Select-Object csname, @{LABEL='LastBootUpTime';
   EXPRESSION={$_.ConverttoDateTime($_.lastbootuptime)}}
 }
 
 # PROMPT
-# first Install starship https://starship.rs/
+# first Install starship https://starship.rs/guide/#%F0%9F%9A%80-installation
 Invoke-Expression (&starship init powershell)
 # Load custom file
 $ENV:STARSHIP_CONFIG = "$HOME\starship.toml"
